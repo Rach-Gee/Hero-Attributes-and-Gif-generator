@@ -6,23 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="spectre.min.css">
+    <link rel="stylesheet" href="spectre-exp.min.css">
+    <link rel="stylesheet" href="spectre-icons.min.css">
     <title>Hero Attributes</title>
 </head>
 
-<header>
-    <h1>Hero Attributes</h1>
+<header class = "hide" >
+    <h1>MySuperHero</h1>
+    <div class = "landing-image">
+        <img src="assets/image/avengers.gif" alt="landing page gif">
+    </div>
+   
 </header>
 <body>
     <main>
-        <form>
-            <input id="search" type="text" placeholder="Super hero name..."/>
-            <button id="btnSearch">Show me my Hero</button>
+        <form class = "hide" id = "user-form">
+            <input id="hero-input" type="text" placeholder="Enter you favourite super hero name"/>
+            <button id="btnSearch">🔍</button>
         </form>
 
-        <div class="col-12 col-md-8">
-            <h2 class="subtitle">Hero:</h2>
-            <div id="hero-gif" class="list-group"></div>
+        <form id = "user-form2">
+            <input type="text" placeholder="Enter you favourite super hero name"/>
+            <button>🔍</button>
+        </form>
+        <button id = "go-back" >Go Back</button>
+        <br>
+        <br>
+        <br>
+        <div>
+            <img src="assets/image/hulk.gif " alt="my hero gif">
         </div>
+
+        <div>
+             <h1>My Hero name</h1>
+        </div>
+        <div>
+             <h3>Powerstats</h3>
+        </div>
+        <div>
+             <h3>Biography</h3>
+        </div>
+        <div>
+             <h3> Apperance</h3>
+        </div>
+        <div>
+             <h3>Work</h3>
+        </div>        
+
     </main>
 
 
