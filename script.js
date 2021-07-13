@@ -5,7 +5,10 @@ var resultImgEl = document.getElementById('hero-gif');
 var searchBtn = document.getElementById('btnSearch');
 var resultContentEl = document.getElementById('text-content');
 var prevSearchBtnEl = document.getElementById('prevSearchBtns');
-var cityNameChosen = ''
+var mainEl = document.getElementById('main');
+var imgSearchedEl = document.getElementById('img-searched');
+//var landingPageEl = document.getElementById('main');
+var heroNameChosen = ''
 
 //function to fetch Giphy API using the input from the end user
 function searchApi(heroName) {
@@ -20,6 +23,7 @@ function searchApi(heroName) {
     })
     .then(function (data) {
       console.log(data);
+      printIMG(data)
     })
 
   if (heroName) {
@@ -38,28 +42,35 @@ function searchApi(heroName) {
       statsAPI(heroID)
     })
 
-function statsAPI(heroID){
-  var locQueryUrlS = 'https://superheroapi.com/api.php/' + statsAPIKey + '/' + heroID + '/powerstats'
+  function statsAPI(heroID) {
+    var locQueryUrlS = 'https://superheroapi.com/api.php/' + statsAPIKey + '/' + heroID + '/powerstats'
 
-  fetch(locQueryUrlS, {
-  })
-    .then(function (response) {
-      return response.json();
+    fetch(locQueryUrlS, {
     })
-    .then(function (dataS) {
-      console.log(dataS);
-      printResults(dataS);
-    })
-}}
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (dataS) {
+        console.log(dataS);
+        heroNameChosen = dataS.name
+        printResults(dataS);
+      })
+  }
+}
+
+function printIMG(data) {
+  imgSearchedEl.innerHTML = '<img src = "'+data.data[1].embed_url+'"  title="GIF via Giphy">'
+}
 
 //rendering results for current days on page 
 function printResults(resultObj) {
   console.log(resultObj);
-  //resultContentEl.innerHTML = ''
+  resultContentEl.innerHTML = ''
 
   //creating element
   var resultCard = document.createElement('div');
   var resultBody = document.createElement('div');
+  mainEl.classList.remove('hide-2')
 
   resultCard.append(resultBody);
 
@@ -87,6 +98,7 @@ function printResults(resultObj) {
   //appending data to the page
   resultBody.append(nameEl, intelligenceEl, strengthEl, speedEl, durabilityEl, powerEl, combatEl);
   resultContentEl.append(resultCard);
+  prevBtn()
 }
 
 //Passing end user search to the API fetch function
@@ -106,8 +118,7 @@ function handleSearchFormSubmit(event) {
 document.getElementById('user-form').addEventListener('submit', handleSearchFormSubmit)
 
 //adding pervious searches to aside tag in HTML
-function prevBtn(btnAppend) {
-  console.log(btnAppend)
+function prevBtn() {
   var prevSearchBtn = document.createElement('button');
 
   var prevSearchArray = JSON.parse(localStorage.getItem("prevSearchHero"));
@@ -116,21 +127,19 @@ function prevBtn(btnAppend) {
   }
   response = heroNameChosen;
 
-  if (btnAppend) {
-    prevSearchArray.push(response);
-    localStorage.setItem("prevSearchHero", JSON.stringify(prevSearchArray));
-    console.log(prevSearchArray);
+  prevSearchArray.push(response);
+  localStorage.setItem("prevSearchHero", JSON.stringify(prevSearchArray));
+  console.log(prevSearchArray);
 
   prevSearchBtn.textContent = JSON.parse(localStorage.getItem("prevSearchArray"));
 
 
   for (var i = 0; i < prevSearchArray.length; i++) {
     prevSearchBtn.textContent = prevSearchArray[i];
-    prevSearchBtn.classList.add('btn', 'btn-dark', 'justify-space-between');
 
     prevSearchBtnEl.append(prevSearchBtn);
     prevSearchBtnEl.addEventListener('click', prevHeroChosen)
-  }}
+  }
 }
 
 // Load data from local storage
@@ -155,7 +164,8 @@ function prevHeroChosen(e) {
   console.dir(e.target)
   searchApi(e.target.innerText)
 }
-document.getElementById('user-form2').addEventListener('submit', handleSearchFormSubmit)
+
+document.getElementById('user-form').addEventListener('submit', handleSearchFormSubmit)
 
 // create a btn that when clicked will delete the local storage
 
