@@ -155,3 +155,21 @@ function prevHeroChosen(e) {
   console.dir(e.target)
   searchApi(e.target.innerText)
 }
+document.getElementById('user-form2').addEventListener('submit', handleSearchFormSubmit)
+
+// create a btn that when clicked will delete the local storage
+
+
+
+// create the btn
+document.getElementById('go-back').addEventListener('click', handleSearchFormSubmit)
+
+// function stating what to clear when run
+function deleteStorage() {
+  localStorage.clear();
+}
+
+// runs functions once the go back btn is clicked
+document.getElementById('go-back').onclick = deleteStorage;
+
+
