@@ -1,63 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="./assets/css/style.css" />
+       
+        <title>Hero Attributes</title>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <link rel="stylesheet" href="spectre.min.css">
-    <link rel="stylesheet" href="spectre-exp.min.css">
-    <link rel="stylesheet" href="spectre-icons.min.css">
-    <title>Hero Attributes</title>
-</head>
-
-<header class = "hide" >
-    <h1>MySuperHero</h1>
-    <div class = "landing-image">
-        <img src="assets/image/avengers.gif" alt="landing page gif">
-    </div>
-   
-</header>
-<body>
-    <main>
-        <form class = "hide" id = "user-form">
-            <input id="hero-input" type="text" placeholder="Enter you favourite super hero name"/>
-            <button id="btnSearch">🔍</button>
-        </form>
-
-        <form id = "user-form2">
-            <input type="text" placeholder="Enter you favourite super hero name"/>
-            <button>🔍</button>
-        </form>
-        <button id = "go-back" >Go Back</button>
-        <br>
-        <br>
-        <br>
-        <div>
-            <img src="assets/image/hulk.gif " alt="my hero gif">
+    <body>
+        <header id="header-hero" class="hide-1">
+            <h1>MySuper<span id="hero">Hero</span></h1>
+        </header>
+        
+        <div class="hide-1" >
+            <form id="user-form">
+                <input
+                    id="hero-input"
+                    type="text"
+                    placeholder="Enter you favourite super hero name"/>
+                <button id="btnSearch">🔍</button>
+            </form>
         </div>
+        
 
-        <div>
-             <h1>My Hero name</h1>
-        </div>
-        <div>
-             <h3>Powerstats</h3>
-        </div>
-        <div>
-             <h3>Biography</h3>
-        </div>
-        <div>
-             <h3> Apperance</h3>
-        </div>
-        <div>
-             <h3>Work</h3>
-        </div>        
+        <main class="hide-2">
+            <section id="section-search">
+                <div class="d-flex justify-center " id="search-form">
 
-    </main>
+                    <div >
+                        <h1>My Super Hero</h1>
+                        <button  class="mt-2 button" id="go-back">Go Back</button>
 
+                        <div id="prevSearchBtns"></div>
+                       
+                    </div>
+                
+                </div>
+                <div id="img-searched">
 
-    <script src="script.js"></script>
+                </div>
 
-</body>
+            </section>
+
+            <div id = "text-content">
+              
+            </div>
+           
+        </main>
+
+        <script src="script.js"></script>
+    </body>
 </html>
