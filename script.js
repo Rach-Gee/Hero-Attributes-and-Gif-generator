@@ -59,7 +59,12 @@ function searchApi(heroName) {
 }
 
 function printIMG(data) {
-  imgSearchedEl.innerHTML = '<img src = "'+data.data[1].embed_url+'"  title="GIF via Giphy">'
+  imgSearchedEl.innerHTML = ''
+  var imgEl = document.createElement('img');
+  imgEl.src = (data.data[0].images.downsized_large.url)
+  imgSearchedEl.classList.add('img-searched')
+
+  imgSearchedEl.append(imgEl);
 }
 
 //rendering results for current days on page 

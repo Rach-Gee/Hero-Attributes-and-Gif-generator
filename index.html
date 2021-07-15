@@ -1,52 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-        <link rel="stylesheet" href="./assets/css/style.css" />
-       
-        <title>Hero Attributes</title>
-    </head>
 
-    <body>
-        <header id="header-hero" class="hide-1">
-            <h1>MySuper<span id="hero">Hero</span></h1>
-        </header>
-        
-        <div class="hide-1" id = "landing-page">
-            <form id="user-form">
-                <input
-                    id="hero-input"
-                    type="text"
-                    placeholder="Enter you favourite super hero name"/>               
-            </form>
-        </div>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css" />
 
-        <div id="prevSearchBtns"></div>        
+    <title>Hero Attributes</title>
+</head>
 
-        <main class="hide-2" id = "main">
-            <section id="section-search">
-                <div class="row" id="search-form">
+<body>
+    <header id="header-hero" class="hide-1">
+        <h1>MySuper<span id="hero">Hero</span></h1>
+    </header>
 
-                    <div>
-                        <h3 class = "justify-center">My Super Hero</h3>
-                        <button  class="mt-2 button justify-center" id="go-back">Go Back</button>
-                    </div>
-                           
+    <div id="landing-page">
+        <form id="user-form">
+            <input id="hero-input" type="text" placeholder="Enter you favourite super hero name" />
+        </form>
+    </div>
+
+    <div id="prevSearchBtns"></div>
+
+    <main class="hide-2" id="main">
+        <section id="section-search">
+            <div class="row" id="search-form">
+
+                <div>
+                    <h3 class="justify-center">My Super Hero</h3>
+                    <button class="mt-2 button justify-center" id="go-back">Go Back</button>
                 </div>
 
-                <div id="img-searched"></div>
-
-            </section>
-
-            <div id = "text-content">
-              
             </div>
-           
-        </main>
 
-        <script src="script.js"></script>
-    </body>
+            <div id="img-searched"></div>
+
+        </section>
+
+        <div id="text-content">
+
+        </div>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
 </html>
