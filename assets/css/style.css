@@ -23,13 +23,6 @@ body {
     background-image: url(../image/avengers.gif);
 }
 
-/* img {
-    display: flex;
-    align-items: center;
-    margin: 0px 200px 200px 200px;
-    width: 80%;
-    height: 400px;
-} */
 
 #user-form {
     display: flex;
@@ -40,81 +33,27 @@ body {
     margin: auto;
     margin-top: 100px;
     border: 1px solid rgb(14, 28, 224);
-    border-radius: 4px;
+    border-radius: 4px;    
     padding: 2px;
 }
 
-input {
+#hero-input {
     width: 400px;
     height: 25px;
-    border: none;
+    margin: 0;
+    border-bottom: none;
     text-align: center;
-}
+    align-items: center;
 
-button {
-    border: none;
-    background: transparent;
-    color: white;
-    padding-right: 8px;
 }
-
-/* #user-form2 {
-    width: 250px;
-    margin-top: 30px;
-    margin-left: 0;
-    height: 40px;
-    border: 1px solid rgb(14, 28, 224);
-    border-radius: 4px;
-    padding: 2px 0 2px 2px;
-} */
 
 #go-back {
     width: 180px;
  
 }
 
-#result-gif {
-    margin-left: 350px;
-    margin-top: -130px;
-}
-
-#result-form {
-    margin-top: 100px;
-    background-color: cadetblue;
-}
-
 #hero {
     color: red;
-}
-
-
-.input-group{
-  min-height: 30px;
-}
-.input {
-  height: 100%;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  border: 1px solid rgb(14, 28, 224);
-  border-right: none;
-
-  border-width: 2px;
-  border-radius: 3px;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  /* outline: 1px;
-  outline-color: rgb(14, 28, 224); */
-}
-.input-icon{
-  background-color: white;
-  height: 30px;
-  margin-left: -6px;
-  border: 1px solid rgb(14, 28, 224);
-  border-left: none;
-  border-width: 2px;
-  border-radius: 3px;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
 }
 
 input:focus {
@@ -147,22 +86,19 @@ input:focus {
 }
 
 #search-form{
-  width: 30vw;
   margin-top: 10vh;
 }
 
 
 #img-searched{
-  background-image: url(../image/hulk.gif);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  min-height: 100vh;
+  min-height: 50vh;
   width: 70vw;
 }
 
 #img-searched-mobile{
-  background-image: url(../image/hulk.gif);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -176,18 +112,23 @@ input:focus {
 }
 
 .justify-center{
-  justify-content: center;
+  margin: 25px 0 0 0;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .align-center{
   align-items: center;
 }
 
-/* .hide-1 {
+.hide-1 {
   display: none;
-} */
+}
 
-.hide-2 {
+ .hide-2 {
   display: none;
 }
 
