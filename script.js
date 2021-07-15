@@ -4,6 +4,11 @@ var statsAPIKey = '10160024845509883'
 var resultImgEl = document.getElementById('hero-gif');
 var searchBtn = document.getElementById('btnSearch');
 var resultContentEl = document.getElementById('text-content');
+var prevSearchBtnEl = document.getElementById('prevSearchBtns');
+var mainEl = document.getElementById('main');
+var imgSearchedEl = document.getElementById('img-searched');
+var clearBtn = document.getElementById('go-back');
+//var landingPageEl = document.getElementById('main');
 var resultContentBioEl = document.getElementById('text-content-Bio');
 var prevSearchBtnEl = document.getElementById('prevSearchBtns');
 var mainEl = document.getElementById('main');
@@ -58,6 +63,9 @@ function searchApi(heroName, btnAppend) {
       .then(function (dataS) {
         console.log(dataS);
         heroNameChosen = dataS.name
+        printResults(dataS);
+      })
+  }
         printResults(dataS,btnAppend);
       })
   }
@@ -124,19 +132,22 @@ function printResults(resultObj, btnAppend) {
   //appending data to the page
   resultBody.append(nameEl, intelligenceEl, strengthEl, speedEl, durabilityEl, powerEl, combatEl);
   resultContentEl.append(resultCard);
+  
   prevBtn(btnAppend)
 }
 
 //Passing end user search to the API fetch function
 function handleSearchFormSubmit(event) {
   event.preventDefault();
-
+  
   var heroInputVal = document.getElementById('hero-input').value;
-
+  
   if (!heroInputVal) {
     console.error('You need a search input value!');
     return;
   }
+  
+  document.getElementById('hero-input').value = "";
 
   searchApi(heroInputVal, true);
 }
@@ -194,6 +205,56 @@ function prevHeroChosen(e) {
 
 document.getElementById('user-form').addEventListener('submit', handleSearchFormSubmit)
 
+//adding pervious searches to aside tag in HTML
+function prevBtn() {
+  var prevSearchBtn = document.createElement('button');
+
+  var prevSearchArray = JSON.parse(localStorage.getItem("prevSearchHero"));
+  if (prevSearchArray == null) {
+    prevSearchArray = []
+  }
+  response = heroNameChosen;
+
+  prevSearchArray.push(response);
+  localStorage.setItem("prevSearchHero", JSON.stringify(prevSearchArray));
+  console.log(prevSearchArray);
+
+  prevSearchBtn.textContent = JSON.parse(localStorage.getItem("prevSearchArray"));
+
+
+  for (var i = 0; i < prevSearchArray.length; i++) {
+    prevSearchBtn.textContent = prevSearchArray[i];
+
+    prevSearchBtnEl.append(prevSearchBtn);
+    prevSearchBtnEl.addEventListener('click', prevHeroChosen)
+  }
+}
+
+// Load data from local storage
+window.onload = function () {
+
+  var prevSearchArray = JSON.parse(localStorage.getItem("prevSearchHero"));
+  if (prevSearchArray) {
+    localStorage.setItem("prevSearchHero", JSON.stringify(prevSearchArray));
+
+    for (var i = 0; i < prevSearchArray.length; i++) {
+      var prevSearchBtn = document.createElement('button');
+      prevSearchBtn.textContent = prevSearchArray[i];
+      prevSearchBtnEl.append(prevSearchBtn);
+      prevSearchBtnEl.addEventListener('click', prevHeroChosen)
+    }
+  }
+};
+
+//making the pervious searches avalible to the searchApi function so these buttons are now interactive
+function prevHeroChosen(e) {
+  e.target.innerText
+  console.dir(e.target)
+  searchApi(e.target.innerText)
+}
+
+document.getElementById('user-form').addEventListener('submit', handleSearchFormSubmit)
+
 // create a btn that when clicked will delete the local storage
 
 
@@ -208,6 +269,14 @@ function deleteStorage() {
 
 // runs functions once the go back btn is clicked
 document.getElementById('go-back').onclick = deleteStorage;
+
+  clearBtn.addEventListener("click", function () {
+  prevSearchBtnEl.innerHTML = "";
+  window.localStorage.clear();
+
+})
+
+
 
 
 /*
