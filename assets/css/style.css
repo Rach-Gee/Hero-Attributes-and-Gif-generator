@@ -91,7 +91,6 @@ input:focus {
 
 
 #img-searched{
-  background-image: url(../image/hulk.gif);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -100,7 +99,6 @@ input:focus {
 }
 
 #img-searched-mobile{
-  background-image: url(../image/hulk.gif);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -130,9 +128,9 @@ input:focus {
   display: none;
 }
 
-/* .hide-2 {
+ .hide-2 {
   display: none;
-} */
+}
 
 
 
