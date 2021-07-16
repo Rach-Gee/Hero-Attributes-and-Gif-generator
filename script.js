@@ -4,13 +4,14 @@ var statsAPIKey = '10160024845509883'
 var resultImgEl = document.getElementById('hero-gif');
 var searchBtn = document.getElementById('btnSearch');
 var resultContentEl = document.getElementById('text-content');
+var headerEl = document.getElementById('header-hero')
 var prevSearchBtnEl = document.getElementById('prevSearchBtns');
 var mainEl = document.getElementById('main');
+var noHeroEl = document.getElementById('no-hero');
 var imgSearchedEl = document.getElementById('img-searched');
 var clearBtn = document.getElementById('go-back');
 var resultContentBioEl = document.getElementById('text-content-Bio');
 var prevSearchBtnEl = document.getElementById('prevSearchBtns');
-var mainEl = document.getElementById('main');
 var imgSearchedEl = document.getElementById('img-searched');
 var heroNameChosen = ''
 
@@ -37,10 +38,14 @@ function searchApi(heroName, btnAppend) {
   fetch(locQueryUrlH, {
   })
     .then(function (response) {
-      return response.json();
+      return response.json();   
     })
     .then(function (dataH) {
       console.log(dataH);
+      if (dataH.response === 'error'){
+        noHeroEl.classList.remove('hide')
+      } else {
+        noHeroEl.classList.add('hide')
       var arraySearch = dataH.results.filter(function(heroRecord) {
         return heroRecord.name.toUpperCase() === heroName.trim().toUpperCase();
       })
@@ -48,7 +53,7 @@ function searchApi(heroName, btnAppend) {
       const heroID = arraySearch[0].id;
       console.log(heroID);
       statsAPI(heroID)
-    })
+    }})
 
   function statsAPI(heroID) {
     var locQueryUrlS = 'https://superheroapi.com/api.php/' + statsAPIKey + '/' + heroID + '/powerstats'
@@ -79,11 +84,13 @@ function printIMG(data) {
 function printResults(resultObj, btnAppend) {
   console.log(resultObj);
   resultContentEl.innerHTML = ''
+  
 
   //creating element
   var resultCard = document.createElement('div');
   var resultBody = document.createElement('div');
-  mainEl.classList.remove('hide-2')
+  mainEl.classList.remove('hide')
+  headerEl.classList.add('hide')
 
   resultCard.append(resultBody);
 
