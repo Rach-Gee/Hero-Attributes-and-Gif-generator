@@ -18,20 +18,6 @@ var heroNameChosen = ''
 //function to fetch Giphy API using the input from the end user
 function searchApi(heroName, btnAppend) {
   if (heroName) {
-    var locQueryUrlG = 'https://api.giphy.com/v1/gifs/search?api_key=' + giphyAPIKey + '&q=' + heroName
-  }
-
-  fetch(locQueryUrlG, {
-  })
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data);
-      printIMG(data)
-    })
-
-  if (heroName) {
     var locQueryUrlH = 'https://superheroapi.com/api.php/' + statsAPIKey + '/search/' + heroName
   }
 
@@ -44,6 +30,8 @@ function searchApi(heroName, btnAppend) {
       console.log(dataH);
       if (dataH.response === 'error'){
         noHeroEl.classList.remove('hide')
+        mainEl.classList.add('hide')
+        headerEl.classList.remove('hide')
       } else {
         noHeroEl.classList.add('hide')
       var arraySearch = dataH.results.filter(function(heroRecord) {
@@ -69,6 +57,21 @@ function searchApi(heroName, btnAppend) {
         printResults(dataS,btnAppend);
       })
   }
+  
+  if (heroName) {
+    var locQueryUrlG = 'https://api.giphy.com/v1/gifs/search?api_key=' + giphyAPIKey + '&q=' + heroName
+  }
+
+  fetch(locQueryUrlG, {
+  })
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+      printIMG(data)
+    })
+
 }
 
 function printIMG(data) {
