@@ -66,9 +66,9 @@ function searchApi(heroName, btnAppend) {
         printResults(dataS);
       })
   }
-        printResults(dataS,btnAppend);
-      })
-  }
+  //       printResults(dataS,btnAppend);
+  //     })
+  // }
 /*
   function bioAPI(heroID) {
     var locQueryUrlB = 'https://superheroapi.com/api.php/' + statsAPIKey + '/' + heroID + '/biography'
