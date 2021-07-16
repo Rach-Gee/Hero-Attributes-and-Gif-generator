@@ -8,14 +8,18 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="./assets/css/style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
     <title>Hero Attributes</title>
 </head>
 
 <body>
-    <header id="header-hero" class="hide-1">
-        <h1>MySuper<span id="hero">Hero</span></h1>
+
+    <header id="header-hero">
+        <h1 id="hero-1"> <span id="my">My</span><span>Super</span><span id="hero">Hero</span></h1>
     </header>
+
+    <div class="hide" id="no-hero">
+
+    </div>
 
     <div id="landing-page">
         <form id="user-form">
@@ -25,30 +29,27 @@
 
     <div id="prevSearchBtns"></div>
 
-    <main class="hide-2" id="main">
+    <main class="hide" id="main">
         <section id="section-search">
             <div class="row" id="search-form">
 
                 <div>
-                    <h3 class="justify-center">My Super Hero</h3>
-                    <button class="mt-2 button justify-center" id="go-back">Go Back</button>
+
+                    <h4 class="justify-center"> MySuperHero</h4>
+                    <button class="mt-2 button justify-center" id="go-back">Delete History</button>
                 </div>
 
             </div>
+            <div id="img-searched">
 
-            <div id="img-searched"></div>
+
+            </div>
+
+            <div id="text-content">
+            </div>
+            <div id="text-content-bio"></div>
 
         </section>
-
-        <div id="text-content"> 
-
-
-        </div>
-
-        <div id = "text-content-bio">
-            
-
-        </div>
 
     </main>
 
