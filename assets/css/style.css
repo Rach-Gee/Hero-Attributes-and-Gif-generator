@@ -1,65 +1,59 @@
 :root {
-    --retroRed: rgb(236, 55, 12);
-    --peach: rgb(236, 188, 144);
-    --blue: rgb(39, 28, 97);
-    --retroGreen: rgb(108, 156, 145);
-    --retroGreenFade: rgb(218, 226, 224);
-    --retroPerple: #95a3ce;
-    --hulkGreen: #30663f;
+  --retroRed: rgb(236, 55, 12);
+  --peach: rgb(236, 188, 144);
+  --blue: rgb(39, 28, 97);
+  --retroGreen: rgb(108, 156, 145);
+  --retroGreenFade: rgb(218, 226, 224);
+  --retroPerple: #95a3ce;
+  --hulkGreen: #30663f;
 }
 
 @font-face {
-  font-family: neon;
-  src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/707108/neon.ttf);
+font-family: neon;
+src: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/707108/neon.ttf);
 }
 
 h1 {
-    text-align: center;
-    font-weight: 800;
+  text-align: center;
+  font-weight: 800;
 }
-
 body {
-    margin: 0 0 0 0;
+  margin: 0 0 0 0;
 }
-
 #header-hero {
-    min-height: 50vh;
-    background-repeat: no-repeat;
-    background-position: right 50% bottom 76%;
-    background-size: cover;
-    background-image: url(../image/marvel-dc2.jpg);
+  min-height: 50vh;
+  background-repeat: no-repeat;
+  background-position: right 50% bottom 76%;
+  background-size: cover;
+  background-image: url(../image/marvel-dc2.jpg);
 }
-
-
 #user-form {
-    display: flex;
-    flex-direction: row;
-    width: max-content;
-    height: 45px;
-    align-items: center;
-    margin: auto;
-    margin-top: 100px;
-    border-radius: 4px; 
-    outline: auto;
-    outline-color: rgb(14, 28, 224);
-    border-radius: 4px;    
-   
+  display: flex;
+  flex-direction: row;
+  width: max-content;
+  height: 45px;
+  align-items: center;
+  margin: auto;
+  margin-top: 100px;
+  border-radius: 4px; 
+  outline: auto;
+  outline-color: rgb(14, 28, 224);
+  border-radius: 4px;    
+ 
 }
-
 #hero-input {
-    width: 400px;
-    height: 45px;
-    margin: 0;
-    border-bottom: none;
-    text-align: center;
-    outline: auto;
-
+  width: 400px;
+  height: 45px;
+  margin: 0;
+  border-bottom: none;
+  text-align: center;
+  outline: auto;
 }
 
 #go-back {
-    width: 180px;
-    margin-top: 25px;
- 
+  width: 180px;
+  margin-top: 25px;
+
 }
 
 #hero {   
@@ -72,23 +66,22 @@ body {
 
 
 input:focus {
-    outline: none;
+  outline: none;
 }
-
 .button{
-    cursor: pointer;
-    border: 0;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    background-color: white;
-    color: rgb(107, 107, 107);
-    border: 2px solid rgb(14, 28, 224);
-    border-radius: 3px;
+  cursor: pointer;
+  border: 0;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  background-color: white;
+  color: rgb(107, 107, 107);
+  border: 2px solid rgb(14, 28, 224);
+  border-radius: 3px;
 }
 
 #section-search {
-    display: flex;
-    background-color: var(--retroGreenFade);
+  display: flex;
+  background-color: var(--retroGreenFade);
 
 }
 
@@ -98,7 +91,7 @@ input:focus {
   background-color: var(--retroGreen);
   height: 100vh;
   width: 20vw;
-  
+
 }
 
 
@@ -146,7 +139,6 @@ p {
 .d-flex{
   display: flex;
 }
-
 .justify-center{
   margin: 25px 0 0 0;
   position: relative;
@@ -154,7 +146,7 @@ p {
   left: 50%;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  
+
 }
 
 .align-center{
@@ -195,10 +187,8 @@ button {
     height: 40vh;
     width: 100vw;
   }
-
   #section-search{
     display: block;
   }
 }
-
 
