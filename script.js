@@ -1,3 +1,4 @@
+// Global variables
 var heroG = document.querySelector('#hero-gif');
 var giphyAPIKey = 'J93RdrgwiH30xTwsClipfYXrfhml0fkg'
 var statsAPIKey = '10160024845509883'
@@ -15,7 +16,7 @@ var prevSearchBtnEl = document.getElementById('prevSearchBtns');
 var imgSearchedEl = document.getElementById('img-searched');
 var heroNameChosen = ''
 
-//function to fetch Giphy API using the input from the end user
+//function to fetch hero API using the input from the end user
 function searchApi(heroName, btnAppend) {
   if (heroName) {
     var locQueryUrlH = 'https://superheroapi.com/api.php/' + statsAPIKey + '/search/' + heroName
@@ -24,25 +25,28 @@ function searchApi(heroName, btnAppend) {
   fetch(locQueryUrlH, {
   })
     .then(function (response) {
-      return response.json();   
+      return response.json();
     })
     .then(function (dataH) {
       console.log(dataH);
-      if (dataH.response === 'error'){
+      if (dataH.response === 'error') {
         noHeroEl.classList.remove('hide')
         mainEl.classList.add('hide')
         headerEl.classList.remove('hide')
       } else {
         noHeroEl.classList.add('hide')
-      var arraySearch = dataH.results.filter(function(heroRecord) {
-        return heroRecord.name.toUpperCase() === heroName.trim().toUpperCase();
-      })
-      console.log(arraySearch);
-      const heroID = arraySearch[0].id;
-      console.log(heroID);
-      statsAPI(heroID)
-    }})
+        var arraySearch = dataH.results.filter(function (heroRecord) {
+          return heroRecord.name.toUpperCase() === heroName.trim().toUpperCase();
+        })
+        console.log(arraySearch);
+        const heroID = arraySearch[0].id;
+        console.log(heroID);
+        statsAPI(heroID)
+        searchGifApi(heroName)
+      }
+    })
 
+  //function to fetch hero API using the ID from the first fetch
   function statsAPI(heroID) {
     var locQueryUrlS = 'https://superheroapi.com/api.php/' + statsAPIKey + '/' + heroID + '/powerstats'
 
@@ -54,40 +58,43 @@ function searchApi(heroName, btnAppend) {
       .then(function (dataS) {
         console.log(dataS);
         heroNameChosen = dataS.name
-        printResults(dataS,btnAppend);
+        printResults(dataS, btnAppend);
       })
   }
-  
-  if (heroName) {
-    var locQueryUrlG = 'https://api.giphy.com/v1/gifs/search?api_key=' + giphyAPIKey + '&q=' + heroName
+
+  //fetch Giphy API using the input from the end user
+  function searchGifApi(heroName, btnAppend) {
+    if (heroName) {
+      var locQueryUrlG = 'https://api.giphy.com/v1/gifs/search?api_key=' + giphyAPIKey + '&q=' + heroName
+    }
+
+    fetch(locQueryUrlG, {
+    })
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log(data);
+        printIMG(data)
+      })
+
   }
-
-  fetch(locQueryUrlG, {
-  })
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      console.log(data);
-      printIMG(data)
-    })
-
 }
 
+// appending the gif to the page
 function printIMG(data) {
   imgSearchedEl.innerHTML = ''
   var imgEl = document.createElement('img');
   imgEl.src = (data.data[0].images.downsized_large.url)
   imgSearchedEl.classList.add('img-searched')
-
   imgSearchedEl.append(imgEl);
 }
 
-//rendering results for current days on page 
+//rendering results for Hero attributes on page 
 function printResults(resultObj, btnAppend) {
   console.log(resultObj);
   resultContentEl.innerHTML = ''
-  
+
 
   //creating element
   var resultCard = document.createElement('div');
@@ -121,21 +128,21 @@ function printResults(resultObj, btnAppend) {
   //appending data to the page
   resultBody.append(nameEl, intelligenceEl, strengthEl, speedEl, durabilityEl, powerEl, combatEl);
   resultContentEl.append(resultCard);
-  
+
   prevBtn(btnAppend)
 }
 
 //Passing end user search to the API fetch function
 function handleSearchFormSubmit(event) {
   event.preventDefault();
-  
+
   var heroInputVal = document.getElementById('hero-input').value;
-  
+
   if (!heroInputVal) {
     console.error('You need a search input value!');
     return;
   }
-  
+
   document.getElementById('hero-input').value = "";
 
   searchApi(heroInputVal, true);
@@ -154,22 +161,23 @@ function prevBtn(btnAppend) {
   response = heroNameChosen;
 
   if (btnAppend) {
-  prevSearchArray.push(response);
-  localStorage.setItem("prevSearchHero", JSON.stringify(prevSearchArray));
-  console.log(prevSearchArray);
+    prevSearchArray.push(response);
+    localStorage.setItem("prevSearchHero", JSON.stringify(prevSearchArray));
+    console.log(prevSearchArray);
 
-  prevSearchBtn.textContent = JSON.parse(localStorage.getItem("prevSearchArray"));
+    prevSearchBtn.textContent = JSON.parse(localStorage.getItem("prevSearchArray"));
 
 
-  for (var i = 0; i < prevSearchArray.length; i++) {
-    prevSearchBtn.textContent = prevSearchArray[i];
+    for (var i = 0; i < prevSearchArray.length; i++) {
+      prevSearchBtn.textContent = prevSearchArray[i];
 
-    prevSearchBtnEl.append(prevSearchBtn);
-    prevSearchBtnEl.addEventListener('click', prevHeroChosen)
-  }}
+      prevSearchBtnEl.append(prevSearchBtn);
+      prevSearchBtnEl.addEventListener('click', prevHeroChosen)
+    }
+  }
 }
 
-// Load data from local storage
+// Load data from local storage on load 
 window.onload = function () {
 
   var prevSearchArray = JSON.parse(localStorage.getItem("prevSearchHero"));
@@ -192,41 +200,13 @@ function prevHeroChosen(e) {
   searchApi(e.target.innerText, false)
 }
 
-// Load data from local storage
-window.onload = function () {
-
-  var prevSearchArray = JSON.parse(localStorage.getItem("prevSearchHero"));
-  if (prevSearchArray) {
-    localStorage.setItem("prevSearchHero", JSON.stringify(prevSearchArray));
-
-    for (var i = 0; i < prevSearchArray.length; i++) {
-      var prevSearchBtn = document.createElement('button');
-      prevSearchBtn.textContent = prevSearchArray[i];
-      prevSearchBtnEl.append(prevSearchBtn);
-      prevSearchBtnEl.addEventListener('click', prevHeroChosen)
-    }
-  }
-};
-
+// runs handleSearchFormSubmit when end user picks a hero
 document.getElementById('user-form').addEventListener('submit', handleSearchFormSubmit)
 
-// create a btn that when clicked will delete the local storage
-
-// create the btn
-document.getElementById('go-back').addEventListener('click', handleSearchFormSubmit)
-
-// function stating what to clear when run
-function deleteStorage() {
-  localStorage.clear();
-}
-
-// runs functions once the go back btn is clicked
-document.getElementById('go-back').onclick = deleteStorage;
-
-  clearBtn.addEventListener("click", function () {
+//handles deleting local strage and previous search buttons 
+clearBtn.addEventListener("click", function () {
   prevSearchBtnEl.innerHTML = "";
   window.localStorage.clear();
-
 })
 
 
