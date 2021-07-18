@@ -27,7 +27,7 @@ SO THAT I can compare the best superheros
 ## Acceptance Criteria
 
 ```
-GIVEN a Hero page with form imputs
+GIVEN a Hero page with form inputs
 WHEN I search for a hero
 THEN I am presented with a GIF of the hero along with the heros attributes and hero name is added to the search history
 WHEN I view attributes for that hero
@@ -35,7 +35,7 @@ THEN I am presented with the hero GIF, hero name, strength, speed, durability, p
 WHEN I click on a hero in the search history
 THEN I am again presented with GIF and attributes
 WHEN I click delete history buttons
-THEN search histry buttons are cleared
+THEN search history buttons are cleared
 ```
  
 
