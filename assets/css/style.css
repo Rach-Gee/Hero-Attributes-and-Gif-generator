@@ -223,6 +223,12 @@ button {
 
 
 @media screen and (max-width: 576px) {
+
+  #no-hero {
+    display: inline-block;
+    width: 100%;
+  }
+
   #search-form{
     width: 100vw;
   }
@@ -230,8 +236,14 @@ button {
     height: 40vh;
     width: 100vw;
   }
-  #search-form{
-    width: 100vw;
+
+  img {
+    width: 100%;
+  }
+  #text-content {
+    display: inline-block;
+    min-height: max-content;
+
   }
   #section-search{
     display: block;
